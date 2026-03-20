@@ -25,7 +25,7 @@ A lightweight Electron wrapper that gives [Google Gemini](https://gemini.google.
 
 Download the latest `.dmg` from [Releases](https://github.com/axiomfolly/gemini-desktop/releases), open it, and drag **Gemini** to **Applications**.
 
-Since the app isn't code-signed, macOS may show a "damaged" warning. Fix it by running:
+The app is ad-hoc signed with the entitlements required for macOS Tahoe+. If macOS shows a "damaged" warning after download, run:
 
 ```bash
 xattr -cr /Applications/Gemini.app
@@ -37,16 +37,16 @@ xattr -cr /Applications/Gemini.app
 git clone https://github.com/axiomfolly/gemini-desktop.git
 cd gemini-desktop
 npm ci
-npm run build
+./build.sh
 ```
 
-Produces `Gemini-darwin-universal/Gemini.app` (runs on both Apple Silicon and Intel).
+Produces a signed `Gemini.app` in `Gemini-darwin-arm64/`.
 
 ### Architecture-specific builds
 
 ```bash
-npm run build:arm64    # Apple Silicon only
-npm run build:x64      # Intel only
+./build.sh arm64    # Apple Silicon (default)
+./build.sh x64      # Intel
 ```
 
 ## Development
@@ -77,10 +77,12 @@ Tested on macOS 26.2 (Tahoe), Apple Silicon (M1).
 ## Project Structure
 
 ```
-├── main.js          # Electron main process
-├── preload.js       # Browser evasion scripts
-├── icon.png         # App icon (PNG)
-├── icon.icns        # App icon (macOS)
+├── main.js            # Electron main process
+├── preload.js         # Browser evasion scripts
+├── icon.png           # App icon (PNG)
+├── icon.icns          # App icon (macOS)
+├── entitlements.plist # macOS code signing entitlements
+├── build.sh           # Build + sign script
 ├── package.json
 └── README.md
 ```

@@ -17,7 +17,6 @@ function createWindow() {
         icon: path.join(__dirname, 'icon.png')
     });
 
-    // Strip Electron and app name from UA so Google sees a standard Chrome browser
     const cleanUA = win.webContents.getUserAgent()
         .replace(/Electron\/\S+ ?/g, '')
         .replace(/Gemini\/\S+ ?/g, '');
@@ -34,46 +33,41 @@ function createWindow() {
     });
 }
 
-const menu = Menu.buildFromTemplate([
-    {
-        label: 'Gemini',
-        submenu: [
-            { role: 'about' },
-            { type: 'separator' },
-            { role: 'quit' }
-        ]
-    },
-    {
-        label: 'Edit',
-        submenu: [
-            { role: 'undo' },
-            { role: 'redo' },
-            { type: 'separator' },
-            { role: 'cut' },
-            { role: 'copy' },
-            { role: 'paste' },
-            { role: 'selectAll' }
-        ]
-    },
-    {
-        label: 'View',
-        submenu: [
-            { role: 'reload' },
-            { role: 'forceReload' },
-            { role: 'toggleDevTools' },
-            { type: 'separator' },
-            { role: 'zoomIn' },
-            { role: 'zoomOut' },
-            { role: 'resetZoom' }
-        ]
-    }
-]);
-Menu.setApplicationMenu(menu);
-
 app.whenReady().then(() => {
-    if (process.platform === 'darwin') {
-        app.dock.setIcon(path.join(__dirname, 'icon.png'));
-    }
+    Menu.setApplicationMenu(Menu.buildFromTemplate([
+        {
+            label: 'Gemini',
+            submenu: [
+                { role: 'about' },
+                { type: 'separator' },
+                { role: 'quit' }
+            ]
+        },
+        {
+            label: 'Edit',
+            submenu: [
+                { role: 'undo' },
+                { role: 'redo' },
+                { type: 'separator' },
+                { role: 'cut' },
+                { role: 'copy' },
+                { role: 'paste' },
+                { role: 'selectAll' }
+            ]
+        },
+        {
+            label: 'View',
+            submenu: [
+                { role: 'reload' },
+                { role: 'forceReload' },
+                { role: 'toggleDevTools' },
+                { type: 'separator' },
+                { role: 'zoomIn' },
+                { role: 'zoomOut' },
+                { role: 'resetZoom' }
+            ]
+        }
+    ]));
 
     createWindow();
 

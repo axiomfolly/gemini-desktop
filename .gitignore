@@ -15,3 +15,5 @@ Gemini-win32-*/
 *~
 .idea/
 .vscode/
+Gemini-v1.0.0-arm64.dmg
+*.dmg
