@@ -1,0 +1,17 @@
+node_modules/
+.DS_Store
+dist/
+release/
+build/
+.env
+
+# Packaged app output
+Gemini-darwin-*/
+Gemini-linux-*/
+Gemini-win32-*/
+
+# Editor
+*.swp
+*~
+.idea/
+.vscode/

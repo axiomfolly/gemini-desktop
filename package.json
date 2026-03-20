@@ -1,0 +1,25 @@
+{
+  "name": "gemini-desktop",
+  "version": "1.0.0",
+  "description": "A native macOS desktop app for Google Gemini — lightweight Electron wrapper with Google sign-in support.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-packager . 'Gemini' --platform=darwin --arch=universal --icon=icon.icns --overwrite --prune=true",
+    "build:arm64": "electron-packager . 'Gemini' --platform=darwin --arch=arm64 --icon=icon.icns --overwrite --prune=true",
+    "build:x64": "electron-packager . 'Gemini' --platform=darwin --arch=x64 --icon=icon.icns --overwrite --prune=true"
+  },
+  "keywords": ["gemini", "google", "desktop", "macos", "electron", "wrapper"],
+  "author": "axiomfolly.net",
+  "license": "MIT",
+  "type": "commonjs",
+  "homepage": "https://github.com/axiomfolly/gemini-desktop",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/axiomfolly/gemini-desktop"
+  },
+  "devDependencies": {
+    "electron": "^40.0.0",
+    "electron-packager": "^17.1.2"
+  }
+}
