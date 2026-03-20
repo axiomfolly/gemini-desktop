@@ -25,6 +25,12 @@ A lightweight Electron wrapper that gives [Google Gemini](https://gemini.google.
 
 Download the latest `.dmg` from [Releases](https://github.com/axiomfolly/gemini-desktop/releases), open it, and drag **Gemini** to **Applications**.
 
+Since the app isn't code-signed, macOS may show a "damaged" warning. Fix it by running:
+
+```bash
+xattr -cr /Applications/Gemini.app
+```
+
 ## Build from Source
 
 ```bash
